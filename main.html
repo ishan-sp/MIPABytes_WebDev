@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreLikeALocal</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <ul>
+            <li style="float:left"><a class="active"  href="landing.html">ExploreLikeALocal</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="main.html">Home</a></li>
+        </ul>
+    </header>
+
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="image/zoo.jpg">
+                <div class="content">
+                    <div class="author">ExploreLikeALocal</div>
+                    <div class="title">Wildlife</div>
+                    <div class="topic">Step Into the Wild, A World of Wonder Awaits!</div>
+                    <div class="des">
+                        Explore vibrant wildlife and exotic animals in beautifully curated enclosures, perfect for family outings and educational adventures.
+                    </div>
+                    <div class="buttons">
+                        <button onclick="sendCategory('Zoo')">SEE MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/temple.jpg">
+                <div class="content">
+                    <div class="author">ExploreLikeALocal</div>
+                    <div class="title">TEMPLE</div>
+                    <div class="topic">Find Peace and Awe in Timeless Sanctuaries!</div>
+                    <div class="des">
+                        Discover serene sanctuaries of spirituality, showcasing intricate architecture and centuries-old traditions.
+                    </div>
+                    <div class="buttons">
+                        <button onclick="sendCategory('Temple')">SEE MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/museum.jpg">
+                <div class="content">
+                    <div class="author">ExploreLikeALocal</div>
+                    <div class="title">MUSEUM</div>
+                    <div class="topic">Journey Through Time – Discover the Stories of the Past</div>
+                    <div class="des">
+                        Explore fascinating historical artifacts and exhibitions that bring the past to life.
+                    </div>
+                    <div class="buttons">
+                        <button onclick="sendCategory('Museum')">SEE MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/park.jpg">
+                <div class="content">
+                    <div class="author">ExploreLikeALocal</div>
+                    <div class="title">PARK</div>
+                    <div class="topic">Breathe, Relax, and Reconnect with Nature!</div>
+                    <div class="des">
+                        Unwind in lush green spaces ideal for picnics, leisure walks, or just soaking in nature's tranquility.
+                    </div>
+                    <div class="buttons">
+                        <button onclick="sendCategory('Park')">SEE MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/viewpoint.jpg">
+                <div class="content">
+                    <div class="author">ExploreLikeALocal</div>
+                    <div class="title">VIEWPOINT</div>
+                    <div class="topic">Capture the Unforgettable – Views That Take Your Breath Away!</div>
+                    <div class="des">
+                        Marvel at breathtaking panoramic vistas that capture the essence of the surrounding landscape.
+                    </div>
+                    <div class="buttons">
+                        <button onclick="sendCategory('Viewpoint')">SEE MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/beach.jpg">
+                <div class="content">
+                    <div class="author">ExploreLikeALocal</div>
+                    <div class="title">BEACH</div>
+                    <div class="topic">Sun, Sand, and Serenity - Your Perfect Escape!</div>
+                    <div class="des">
+                        Bask in golden sands and crystal-clear waters, a haven for relaxation and water sports.
+                    </div>
+                    <div class="buttons">
+                        <button onclick="sendCategory('Beach')">SEE MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/restaurant.jpg">
+                <div class="content">
+                    <div class="author">ExploreLikeALocal</div>
+                    <div class="title">RESTAURANT</div>
+                    <div class="topic">Savor Every Bite - A Culinary Adventure Awaits!</div>
+                    <div class="des">
+                        Savor delectable cuisines in charming settings that cater to every palate and occasion.
+                    </div>
+                    <div class="buttons">
+                        <button onclick="sendCategory('Restaurant')">SEE MORE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- list thumbnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="image/zoo.jpg">
+                <div class="content">
+                    <div class="title">ZOO</div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/temple.jpg">
+                <div class="content">
+                    <div class="title">TEMPLE</div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/museum.jpg">
+                <div class="content">
+                    <div class="title">MUSEUM</div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/park.jpg">
+                <div class="content">
+                    <div class="title">PARK</div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/viewpoint.jpg">
+                <div class="content">
+                    <div class="title">VIEWPOINT</div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/beach.jpg">
+                <div class="content">
+                    <div class="title">BEACH</div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/restaurant.jpg">
+                <div class="content">
+                    <div class="title">RESTAURANT</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- next prev -->
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+
+    <br>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About ExploreLikeALocal</h3>
+                <p>Discover local attractions based on your preferences and location.</p>
+            </div>
+            <div class="footer-section">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ExploreLikeALocal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to send the category data to the server
+        function sendCategory(category) {
+            const requestData = { category: category };
+
+            fetch('/map', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the server if needed
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                // Handle any errors that occurred during the request
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>

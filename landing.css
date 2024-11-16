@@ -1,5 +1,6 @@
 /* Base Styles */
-:root {
+
+:root[light-theme = 'light'] {
     --primary-color: #2a2a2a;
     --accent-color: #4a90e2;
     --text-light: #ffffff;
@@ -52,7 +53,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://images.unsplash.com/photo-1488646953014-85cb44e2582') center/cover;
+    background: url("https://img.freepik.com/free-photo/about-as-service-contact-information-concept_53876-138509.jpg") center/cover;
     opacity: 0.1;
     z-index: 0;
 }
@@ -64,6 +65,16 @@ nav {
     padding: 1.5rem 5%;
     position: relative;
     z-index: 1;
+    
+    /* Frosted Glass Effect */
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur effect to the background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for prominence */
+}
+
+nav:hover {
+    background: rgba(255, 255, 255, 0.3); /* Slightly increased opacity when hovered */
 }
 
 .logo {
@@ -314,127 +325,17 @@ footer {
         font-size: 1.2rem;
     }
 }
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-/* Body and Background */
-body {
-    font-family: 'Roboto', sans-serif;
-    background: url('https://media.istockphoto.com/id/537816526/vector/underwater-world.jpg?s=612x612&w=0&k=20&c=U_1QpgfCsqkNFdbiLqFs6C-RyC5d2Eyfl5Kf8_YBgT0=') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-}
-
-/* Navbar */
-header {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav .logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-}
-nav ul {
-    display: flex;
-    list-style: none;
-}
-nav ul li {
-    margin-left: 20px;
-}
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 400;
-    font-size: 18px;
-}
-
-/* Hero Section */
-#hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-#hero h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-    font-family: 'Poppins', sans-serif;
-}
-#hero p {
-    font-size: 22px;
-    margin-bottom: 30px;
-}
-.cta-btn {
-    padding: 15px 30px;
-    background-color: #ff6a00;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    border-radius: 5px;
-}
-
-/* Destinations Section */
-#destinations {
-    padding: 50px 0;
-    text-align: center;
-}
-#destinations h2 {
-    font-size: 40px;
-    margin-bottom: 30px;
-}
-.cards {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-}
-.card {
-    background-color: rgba(255, 255, 255, 0.3);
-    padding: 20px;
-    border-radius: 10px;
-    width: 250px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-.card img {
-    width: 100%;
-    border-radius: 10px;
-    height: 200px;
-    object-fit: cover;
-}
-.card h3 {
-    margin-top: 10px;
-    font-size: 22px;
-}
-
-/* Footer */
-footer {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    text-align: center;
+.landing {
     position: relative;
-    bottom: 0;
-    width: 100%;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center; /* Horizontally center the video */
+    align-items: center; /* Vertically center the video */
 }
-footer .social-icons {
-    margin-top: 15px;
-}
-footer .social-icons a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
+
+.bg-video {
+    width: 100%; /* Ensure the video fills the width */
+    height: 100%; /* Ensure the video fills the height */
+    object-fit: cover; /* Make the video cover the area without distortion */
 }
