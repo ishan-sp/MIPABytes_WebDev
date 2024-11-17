@@ -9,9 +9,10 @@
 <body>
     <header>
         <ul>
-            <li style="float:left"><a class="active"  href="landing.html">ExploreLikeALocal</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="main.html">Home</a></li>
+            <li style = "float:left"><a class = "active" href = "/">ExploreLikeALocal</button></a></li>
+            <li><a href="about.html">About Us</button></a></li>
+            <li><a href="main.html">Home</button></a></li>
+        </ul>
         </ul>
     </header>
 
@@ -21,6 +22,7 @@
         <div class="list">
             <div class="item">
                 <img src="image/zoo.jpg">
+
                 <div class="content">
                     <div class="author">ExploreLikeALocal</div>
                     <div class="title">Wildlife</div>
@@ -189,31 +191,32 @@
             <p>&copy; 2024 ExploreLikeALocal. All rights reserved.</p>
         </div>
     </footer>
-
     <script>
-        // Function to send the category data to the server
         function sendCategory(category) {
-            const requestData = { category: category };
-
             fetch('/map', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(requestData),
+                body: JSON.stringify({ category: category })
             })
             .then(response => response.json())
             .then(data => {
-                // Handle the response from the server if needed
-                console.log('Success:', data);
+                console.log(data);
+                // Store the category in local storage
+                localStorage.setItem('category', category);
+                // Redirect to map.html
+                window.location.href = `./map.html`;
             })
-            .catch(error => {
-                // Handle any errors that occurred during the request
-                console.error('Error:', error);
-            });
+            .catch(error => console.error('Error:', error));
         }
+    
+        document.getElementById('categoryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const category = document.getElementById('category').value;
+            sendCategory(category);
+        });
     </script>
-
     <script src="app.js"></script>
 </body>
 </html>
