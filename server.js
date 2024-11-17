@@ -49,7 +49,7 @@ const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-pro",
-  systemInstruction: "You are Bluebot, a friendly assistant for Sea Savvy. Help users with ocean education through gamification, answering questions about the ocean, weather, and guiding them through the Sea Quest game. Don't reveal private information. Respond in a friendly and informative manner."
+  systemInstruction: "generate a json with very very short sentences for a tabular frontend, cuisine, local phrases native to the state that could help you communicate, format it nicely in bold or other format. your response will be directly embedded in small divs in frontend so just organise it well. Follow the json structure always and dont deviate as shown in examples. If given a place like visveswarya museum, you can refer to cuisine of karnataka and location related field to karnataka"
 });
 
 const generationConfig = {
@@ -60,17 +60,41 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
-// AI function to process user queries
-async function runAI(res, query) {
+async function run(res, qur) {
   const chatSession = model.startChat({
     generationConfig,
+ // safetySettings: Adjust safety settings
+ // See https://ai.google.dev/gemini-api/docs/safety-settings
     history: [
-      { role: "user", parts: [{ text: query }] },
+      {
+        role: "user",
+        parts: [
+          {text: "lalbagh\n"},
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {text : '{"country":"India","state":"Karnataka","desc":"Lalbagh Botanical Garden, located in Bangalore, India, is a historic and expansive garden established in 1760 by King Hyder Ali and later developed by his son, Tipu Sultan. Spanning over 240 acres, Lalbagh is renowned for its diverse collection of tropical plants, beautiful landscapes, and prominent features such as the iconic Glass House, the picturesque lake, the unique Floral Clock, and the massive rock with a watchtower. This garden serves as a center for horticultural research and conservation while also being a popular recreational spot for visitors, offering a serene and scenic retreat in the heart of the bustling city.","cuisine":[{"name":"Dosa","description":"Dosa is a thin, crispy Indian pancake made from fermented rice and urad dal (black gram) batter, typically served with chutneys and sambar."},{"name":"Idly","description":"Idly is a soft, steamed cake made from a fermented batter of rice and urad dal, commonly served with chutneys and sambar for breakfast or as a snack."}],"phrases":[{"phrase":"Namaskara (ನಮಸ್ಕಾರ)","translation":"Hello / Greetings"},{"phrase":"Hegiddira? (ಹೇಗಿದ್ದೀರಾ?)","translation":"How are you?"},{"phrase":"Naanu sariyagi Kannada helthini (ನಾನು ಸರಿಯಾಗಿ ಕನ್ನಡ ಹೇಳ್ತಿನಿ)","translation":"I speak Kannada well."}]}'},
+        ],
+      },
+      {
+        role: "user",
+        parts: [
+          {text: "delhi\n"},
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {text : '{"country":"India","state":"Delhi","desc":"Delhi, the capital of India, is a vibrant metropolis known for its rich history, bustling markets, iconic landmarks like the Red Fort and India Gate, and its status as a political and cultural hub.","cuisine":[{"name":"Chole Bhature","description":"Chole Bhature is a popular Delhi street food consisting of spicy chickpeas (chole) served with deep-fried bread (bhature)."},{"name":"Paratha","description":"Paratha is a flat, unleavened Indian bread, often stuffed with various fillings like potatoes, paneer, or cauliflower, and served with yogurt, pickle, and curry."},{"name":"Butter Chicken","description":"Butter Chicken is a rich and creamy curry made with chicken cooked in a tomato-based sauce, flavored with butter, cream, and Indian spices."}],"phrases":[{"phrase":"Namaste (नमस्ते)","translation":"Hello / Greetings"},{"phrase":"Aap kaise hain? (आप कैसे हैं?)","translation":"How are you?"},{"phrase":"Main Dilliwala hoon (मैं दिल्लीवाला हूँ)","translation":"I am from Delhi."}]}'},
+        ],
+      },
     ],
   });
-
-  const result = await chatSession.sendMessage(query);
-  res.json({ response: result.response.text() });
+  const result = await chatSession.sendMessage(qur);
+  res.json({response : result.response.text()});
+  console.log(result.response.text());
 }
 
 // Middleware setup
@@ -184,6 +208,14 @@ app.post("/login", async (req, res) => {
     const data = req.body;
     console.log(data);
     res.json({data});
+});
+
+app.post("/map/message", (req, res) => {
+  const qr = req.body;
+  console.log("The req.body received is:", qr);  // This should now properly log the parsed JSON object
+  const usermessage = qr.usermsg;
+  console.log("User message is:", usermessage);
+  run(res, usermessage);
 });
 
   
